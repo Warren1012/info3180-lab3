@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block css %} {% endblock%}
+
+{% include "header.html" %}
+
+{% block main %}
+<h2>Contac Form</h2>
+<hr/>
+
+<form method="POST" name="forms" id="forms" action="{{url_for('forms')}}">
+    {{form.csrf_token}}
+    <div class="form-group">
+        {{forms.name.label}} {{ forms.name(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+        {{forms.email.label}} {{ forms.email(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+        {{forms.subject.label}} {{ forms.subject(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+        {{forms.text.label}} {{ forms.text(class="form-control") }}
+    </div>
+
+    <button type="submit" >Submit</button>
+</form>
+
+{% endblock %}
