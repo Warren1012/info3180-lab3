@@ -10,6 +10,7 @@ from flask import render_template, request, redirect, url_for, flash
 from app import mail
 from flask_mail import Message
 from app.forms import ContactForm
+app.secret_key='rtw4erfwe4r$!'
 ###
 # Routing for your application.
 ###
@@ -69,8 +70,8 @@ def page_not_found(error):
 def contact():
     form= ContactForm()
     while form.validate_on_submit():
-        msg=Message(request.form['sub'], sender=(request.form['name'], request.form['email']), recipients=['jody.harrison32@gmail.com'])
-        msg.body=request.form['body']
+        msg=Message(request.form['subject'], sender=(request.form['name'], request.form['email']), recipients=['to@example.com'])
+        msg.body=request.form['textarea']
         mail.send(msg)
         flash('Message Sent!')
         return redirect(url_for('home') )
